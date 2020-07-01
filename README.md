@@ -13,11 +13,11 @@ The app is composed of two screens. The first screen displays a list of contacts
 
 **Contact List**
 
-  ![Screenie|300](http://i.imgur.com/VSbsd4Gl.png)
+  ![Walkthrough](walkthrough.gif)
 
 **Contact Details**
 
-  ![Screenie|300](http://i.imgur.com/NpKJJgdl.png)
+  ![Details Screen](details.gif)
 
 ## Overview
 
