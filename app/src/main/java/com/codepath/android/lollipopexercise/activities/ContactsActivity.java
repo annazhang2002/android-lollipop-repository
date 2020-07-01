@@ -3,6 +3,7 @@ package com.codepath.android.lollipopexercise.activities;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.codepath.android.lollipopexercise.R;
 import com.codepath.android.lollipopexercise.adapters.ContactsAdapter;
 import com.codepath.android.lollipopexercise.models.Contact;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -52,6 +54,8 @@ public class ContactsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_contacts, menu);
+
+
         return true;
     }
 
@@ -62,6 +66,25 @@ public class ContactsActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (id == R.id.miAdd) {
+
+            Contact randomContact = Contact.getRandomContact(this);
+            contacts.add(randomContact);
+            mAdapter.notifyItemInserted(contacts.size()-1);
+
+            Snackbar.make(rvContacts, R.string.snackbar_text, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.snackbar_action, undoContactAdd)
+                    .show(); // Don’t forget to show!
+        }
+
         return super.onOptionsItemSelected(item);
     }
+
+    View.OnClickListener undoContactAdd = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            contacts.remove(contacts.size()-1);
+            mAdapter.notifyItemRemoved(contacts.size());
+        }
+    };
 }
