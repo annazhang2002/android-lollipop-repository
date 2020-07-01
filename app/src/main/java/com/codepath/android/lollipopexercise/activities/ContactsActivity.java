@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,7 +75,9 @@ public class ContactsActivity extends AppCompatActivity {
 
             Snackbar.make(rvContacts, R.string.snackbar_text, Snackbar.LENGTH_LONG)
                     .setAction(R.string.snackbar_action, undoContactAdd)
+                    .setActionTextColor(ContextCompat.getColor(ContactsActivity.this, R.color.accent))
                     .show(); // Don’t forget to show!
+            rvContacts.scrollToPosition(contacts.size()-1);
         }
 
         return super.onOptionsItemSelected(item);
