@@ -1,4 +1,4 @@
-# Android Lollipop Exercise
+# Contacts Animation Exercise
 
 Android app to use as the base app for implementing the following material widgets and animations that were introduced in Android 5.0 (API level 21).
 
